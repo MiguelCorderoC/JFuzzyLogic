@@ -28,6 +28,9 @@ public class App extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         initComponents();
+        btnPrediccion.addActionListener(this);
+        btnGrafica.addActionListener(this);
+        btnHistorial.addActionListener(this);
     }
 
     private void initComponents() {
@@ -81,6 +84,22 @@ public class App extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnPrediccion) {
+            txtResultado
+                    .setText(Prediccion.recomendar(txtCalificacion.getText(), txtGenero.getText(), txtAno.getText()));
 
+        }
+        if (e.getSource() == btnGrafica) {
+            /*
+             * Prediccion.grafica(txtCalificacion.getText(), txtGenero.getText(),
+             * txtAno.getText(),
+             * txtResultado.getText());
+             */
+            Prediccion.grafica(txtCalificacion.getText(), txtGenero.getText(), txtAno.getText(),
+                    txtResultado.getText());
+        }
+        if (e.getSource() == btnHistorial) {
+            new frmHistorial();
+        }
     }
 }
